@@ -1,14 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import ejs from 'ejs';
-import fs from 'fs';
 import path from 'path';
 import axios from 'axios';
+import csvParser from 'csv-parser';
+import * as dateFunction from 'date-fns';
+import fs from 'fs';
 import https from 'https';
 import { ENV_VARIABLE } from '../configs/env';
-import * as dateFunction from 'date-fns';
-import csvParser from 'csv-parser';
 import { APP_TYPE, EMAIL_TEMPLATES, PAGINATION, PDF_MICRO_SERVICE_END_POINT, templateKeyWord, UPLOAD_PATH, USER_TYPES } from '../constants/app';
-import { TPdfOption } from '../types/commanType';
 import Joi from 'joi';
 import { validate, version, v4 as uuidv4 } from 'uuid';
 import crypto from 'crypto';
@@ -627,7 +626,7 @@ export const isValidUUID = (id: string, expectedVersion?: 1 | 4): boolean => {
 };
 
 import { OrderItem, Sequelize } from 'sequelize';
-import { IFileStorageAttributes } from '../interfaces/fileStorageInterface';
+// import { IFileStorageAttributes } from '../interfaces/fileStorageInterface';
 import { S3_STORAGE_PATH } from '../constants/fileStore';
 
 /**
@@ -664,10 +663,9 @@ export const parseOrderOptions = (inputOrder: unknown, defaultOrder: OrderItem[]
     return order;
 };
 
-import { TAeraModelCreationAttributes } from '../types/areaType';
-import { IInstituteAttributes } from '../interfaces/instituteInterface';
-import { IUserAttributes } from '../interfaces/userInterface';
 import { Request } from 'express';
+import { TPdfOption } from '@kipipackages/interfaces/src/types/commanType';
+import { IFileStorageAttributes, IInstituteAttributes, IUserAttributes, TAeraModelCreationAttributes } from '@kipipackages/interfaces';
 /**
  * Get all localities/suburbs for a given city using Overpass API (OpenStreetMap).
  * @param {string} cityName - Name of the city (e.g., "Ahmedabad")

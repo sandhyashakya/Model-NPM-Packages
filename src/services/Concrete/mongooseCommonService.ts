@@ -113,7 +113,7 @@ export class MongooseCommonService<T extends Document> implements IMongooseCommo
     async update(
         filter: FilterQuery<T>,
         updateData: UpdateQuery<T>,
-        options: MongooseUpdateQueryOptions<T> & { userId?: string; session?: ClientSession } = { new: true },
+        options: MongooseUpdateQueryOptions<T> & { userId?: string; session?: ClientSession } = {},
     ): Promise<UpdateWriteOpResult | null> {
         return this.model.updateMany(filter, updateData, options).exec();
     }
@@ -144,7 +144,7 @@ export class MongooseCommonService<T extends Document> implements IMongooseCommo
 
     async delete(
         filter: FilterQuery<T>,
-        options: MongooseUpdateQueryOptions<T> & { userId?: string; session?: ClientSession } = { new: true },
+        options: MongooseUpdateQueryOptions<T> & { userId?: string; session?: ClientSession } = {},
     ): Promise<UpdateWriteOpResult | null> {
         return this.model.updateMany(filter, { deletedBy: options.userId, deletedAt: new Date() }, options).exec();
     }

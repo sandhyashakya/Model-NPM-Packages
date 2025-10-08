@@ -654,10 +654,14 @@ async function addDocsDetailsHook(
           chapter.files?.map((file) => file.fileStorageId as string) || []
       ) || []
   );
-  const fileStorageList = await FileStorageModel.findAll({
+  const fileStorage = await FileStorageModel.findAll({
     where: { id: { [Op.in]: fileStorageIdList } },
     attributes: { exclude: DEFAULT_EXCLUDES_ATTRIBUTES },
+
   });
+
+  const fileStorageList = JSON.parse(JSON.stringify(fileStorage)) as IFileStorageAttributes[];
+
   const fileStorageListById = keyByFieldOrFields(fileStorageList, "id");
 
   const fileCategoryIdList = subjectIndexList

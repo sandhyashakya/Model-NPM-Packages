@@ -3,9 +3,14 @@ import postgresConfig = require("../src/configs/postgresConfig");
 export { postgresConfig };
 
 export * from "../src/configs/env"
+export * from "../src/configs/aws"
 
 export * from "../src/constants/app"
 export  * from "../src/constants/defaultModelAttributes"
+export * from "../src/constants/fileStore"
+export * from "../src/constants/successMessages"
+export * from "../src/constants/errorMessages"
+export * from "../src/constants/httpStatusCode"
 
 // psql models
 export * from "../src/models/psql/SubCategoriesModel";

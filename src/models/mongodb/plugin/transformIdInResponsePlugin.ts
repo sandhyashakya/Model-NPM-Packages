@@ -34,7 +34,7 @@ const transformIdInResponsePlugin = (schema: Schema) => {
             if (ret._id !== undefined) {
                 ret.id = ret._id; // Map _id to id
                 delete ret._id; // Remove _id
-                delete ret.__v; // Optionally remove __v
+                delete (ret as any).__v; // Optionally remove __v
             }
         },
     });
@@ -45,7 +45,7 @@ const transformIdInResponsePlugin = (schema: Schema) => {
             if (ret._id !== undefined) {
                 ret.id = ret._id; // Map _id to id
                 delete ret._id; // Remove _id
-                delete ret.__v; // Optionally remove __v
+                delete (ret as any).__v; // Optionally remove __v
             }
         },
     });

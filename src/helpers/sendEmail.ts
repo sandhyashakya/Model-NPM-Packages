@@ -1,6 +1,6 @@
 import nodemailer, { Transporter } from 'nodemailer';
-import { IEmailOptions } from '../interfaces/commanInterface';
 import { ENV_VARIABLE } from '../configs/env';
+import { IEmailOptions } from '@kipipackages/interfaces';
 
 export const sendEmail = async (emailOptions: IEmailOptions): Promise<void> => {
     // Configure the transporter with type annotations

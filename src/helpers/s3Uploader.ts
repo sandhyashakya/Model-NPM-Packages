@@ -5,7 +5,7 @@ import { s3 } from '../configs/aws';
 import { ENV_VARIABLE } from '../configs/env';
 import { GetObjectCommand, PutObjectCommand } from '@aws-sdk/client-s3';
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
-import { IFileStorageAttributes } from '../interfaces/fileStorageInterface';
+import { IFileStorageAttributes } from '@kipipackages/interfaces';
 
 export const uploadFileToS3 = async (localFilePath: string, s3Key: string, s3Bucket: string = ENV_VARIABLE.AWS_BUCKET_NAME): Promise<string> => {
     try {

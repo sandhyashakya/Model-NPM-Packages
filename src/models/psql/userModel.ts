@@ -381,7 +381,7 @@ async function generateGlobalUniqueNumber(
       } else {
         data.lastRollNumber += 1;
       }
-      await UniqueNumberCounterModel.update(
+      await UniqueNumberCounterModel.updateOne(
         { id: data.id },
         {
           $set: {
@@ -420,7 +420,7 @@ async function generateGlobalUniqueNumber(
       } else {
         data.lastRollNumber += 1;
       }
-      await UniqueNumberCounterModel.update(
+      await UniqueNumberCounterModel.updateOne(
         { id: data.id },
         {
           $set: {
