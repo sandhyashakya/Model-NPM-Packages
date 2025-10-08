@@ -1,0 +1,34 @@
+name: Publish Package
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: "https://registry.npmjs.org"
+          scope: "kipipackages"
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Build package
+        run: yarn build
+
+      - name: Create directory
+        run: mkdir -p dist/output
+
+      - name: Publish package
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
